@@ -37,8 +37,8 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 				<util:properties location="classpath:resource/mydriver.properties"></util:properties>
 		</property> -->
 	</bean>
-	<bean id="c" class="beans.Car">
-		<property name="carUser" value="Ganesh"></property>
+	<bean id="c" class="beans.Car" p:carUser="Ganesh" >
+		<!-- <property name="carUser" value="Ganesh"></property> -->
 		<property name="carName">
 			<list>
 				<value>BMU</value>
