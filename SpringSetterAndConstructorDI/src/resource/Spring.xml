@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:jee="http://www.springframework.org/schema/jee"
+xmlns:lang="http://www.springframework.org/schema/lang" 
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:c="http://www.springframework.org/schema/c" 
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:util="http://www.springframework.org/schema/util"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	
+	<bean id="t" class="beans.Test" c:user="Ganesha">
+		<constructor-arg value="Ganesh@gmail.com" index="1"></constructor-arg>
+		<!-- <constructor-arg value="Ganesh" index="0"></constructor-arg> -->
+		<constructor-arg value="24" index="2"></constructor-arg>
+		<property name="driver">
+			<props>
+				<prop key="driverclass">com.mysql.jdbc.driver</prop>
+				<prop key="url">jdbc:mysql://localhost:3306/test</prop>
+				<prop key="user">root</prop>
+				<prop key="password">Pass@123</prop>
+			</props>
+		</property>
+		<!-- In case of Properties file DTD Based configration is not suitable, so we need to add xml based configuration.-->
+		<!-- <property name="driver">
+				<util:properties location="classpath:resource/mydriver.properties"></util:properties>
+		</property> -->
+	</bean>
+	<bean id="c" class="beans.Car">
+		<property name="carUser" value="Ganesh"></property>
+		<property name="carName">
+			<list>
+				<value>BMU</value>
+				<value>Audi</value>
+				<value>Honda</value>
+			</list>
+		</property>
+		<property name="engine">
+			<list>
+				<ref bean="e"></ref>
+				<ref bean="e1"></ref>
+			</list>
+		</property>
+	</bean>
+	<bean id="e" class="beans.Engine">
+		<property name="modelYear" value="2018"></property>
+	</bean>
+	<bean id="e1" class="beans.Engine">
+		<property name="modelYear" value="2019"></property>
+	</bean>
+
+</beans>		  
